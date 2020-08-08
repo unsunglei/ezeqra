@@ -11,7 +11,7 @@ ezeqra:
     server: aradune
     player: Soandso
     log-file-format: eqlog_%s_%s.txt
-    log-start-at-end: false
+    log-start-at-end: true
     raid-roster-prefix-format: RaidRoster_%s-
   api:
     host: http://localhost:8080
