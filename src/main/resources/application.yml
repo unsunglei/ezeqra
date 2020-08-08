@@ -1,0 +1,32 @@
+server:
+  port: 8081
+  
+logging:  level:     me.eq.attendance.client: INFO  file: logs/app.log
+    
+logging.file.max-size: 10mb
+  
+ezeqra:
+  client:
+    eq-home: C:/Users/Public/Sony Online Entertainment/Installed Games/EverQuest
+    server: aradune
+    player: Soandso
+    log-file-format: eqlog_%s_%s.txt
+    log-start-at-end: false
+    raid-roster-prefix-format: RaidRoster_%s-
+  api:
+    host: http://localhost:8080
+    token: 8eb4c4b2-4d45-402a-b7f0-b5377885c283
+    roster:
+      url: /api/v1/raidrosters
+    loot-call:
+      url: /api/v1/lootcalls
+  database:
+    roster: database/roster.json
+    loot-call: database/lootcall.json
+  cron:
+    roster: "*/20 * * * * *"
+    loot-call: "*/20 * * * * *"
+  regex:
+    loot-call: ^(?<item>.*)\W\$\$\W(?<winner>[A-Za-z]+).*$
+    chat-channel: ^(?<subject>You|[A-Za-z]+)\W(?<action>[a-z]+)\W?(?<channel>.*),\W'(?<context>.*)'$
+    log-line: ^\[[A-Z][a-z]{2}\W(?<month>[A-Z][a-z]{2})\W(?<day>\d{2})\W(?<hours>\d{2}):(?<minutes>\d{2}):(?<seconds>\d{2}) (?<year>\d{4})\]\W(?<body>.*)
